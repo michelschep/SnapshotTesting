@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using FluentAssertions;
 using SnapshotTesting.Refactoring.FirstExampleTests;
 
@@ -44,8 +46,15 @@ public class UnitTest
 
         // Assert
 //        statement.Should().Be("???");
-        return Verifier.Verify(statement);
+        var settings = new VerifySettings();
+        settings.ScrubLinesWithReplace(s =>
+        {
+            var pattern = @"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}";
+            var regex = new Regex(pattern);
+            var r = regex.Replace(s, "DATETIME");
+            return r;
+        });
+        
+        return Verify(statement, settings);
     }
-    
-    
 }
