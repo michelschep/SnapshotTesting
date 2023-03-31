@@ -6,7 +6,7 @@ using SnapshotTesting.Refactoring.FirstExampleTests;
 namespace SnapshotTesting;
 
 [UsesVerify]
-public class UnitTest1
+public class BasicExample 
 {
     [ModuleInitializer]
     public static void Initialize()
