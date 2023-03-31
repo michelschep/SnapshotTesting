@@ -3,6 +3,7 @@ using SnapshotTesting.Refactoring.FirstExampleTests;
 
 namespace SnapshotTesting;
 
+[UsesVerify]
 public class UnitTest
 {
     [Fact]
@@ -19,7 +20,7 @@ public class UnitTest
     }
     
     [Fact]
-    public void CreateReport_ShouldBeAsExpected()
+    public Task CreateReport_ShouldBeAsExpected()
     {
         // Arrange
         var theater = new Theater();
@@ -42,13 +43,9 @@ public class UnitTest
         var statement = theater.Statement(invoice, plays);
 
         // Assert
-        string expected = "Statement for BigCo\r\n";
-        expected += " Hamlet: $650.00 (55 seats)\r\n";
-        expected += " As You Like It: $580.00 (35 seats)\r\n";
-        expected += " Othello: $500.00 (40 seats)\r\n";
-        expected += "Amount owed is $1,730.00\r\n";
-        expected += "You earned 47 credits";
-
-        statement.Should().Be(expected);
+//        statement.Should().Be("???");
+        return Verifier.Verify(statement);
     }
+    
+    
 }
