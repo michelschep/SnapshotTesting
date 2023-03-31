@@ -1,38 +1,20 @@
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using FluentAssertions;
-using Microsoft.Extensions.Logging;
-using Serilog;
 using SnapshotTesting.Refactoring.FirstExampleTests;
-using VerifyTests.Serilog;
 
 namespace SnapshotTesting;
 
-
 [UsesVerify]
-public class UnitTest
+public class UnitTest1
 {
-    private Calculator _calculator;
-
-    [ModuleInitializer]
-    public static void Initialize() =>
-        VerifySerilog.Initialize();
-
-    public UnitTest()
-    {
-        var loggerFactory = new LoggerFactory()
-            .AddSerilog(Log.Logger);
-
-        _calculator = new Calculator(loggerFactory.CreateLogger("Logger"));
-    }
-    
     [Fact]
     public void Multiply_MultipleNumbers_ReturnsMultiplication()
     {
         // Arrange
-
+        var calculator = new Calculator();
+        
         // Act
-        var actual = _calculator.Multiply(6, 7);
+        var actual = calculator.Multiply(6, 7);
 
         // Assert
         actual.Should().Be(42);
@@ -75,16 +57,11 @@ public class UnitTest
         return Verify(statement, settings);
     }
 
-    [Fact]
-    public Task SnaphotTestingAndLogging()
+    class Calculator
     {
-        // Arrange
-        RecordingLogger.Start();
-
-        // Act
-        var actual = _calculator.Multiply(6, 7);
-        
-        // Assert
-        return Verify(actual);
+        public int Multiply(int x, int y)
+        {
+            return 42;
+        }
     }
 }

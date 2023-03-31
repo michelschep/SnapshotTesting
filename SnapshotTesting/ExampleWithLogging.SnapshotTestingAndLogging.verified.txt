@@ -1,0 +1,17 @@
+﻿{
+  target: 42,
+  logs: [
+    {
+      Information: Multiply 6 and 7,
+      Properties: {
+        SourceContext: Logger
+      }
+    },
+    {
+      Information: Multiplication of 6 and 7 is 42,
+      Properties: {
+        SourceContext: Logger
+      }
+    }
+  ]
+}
