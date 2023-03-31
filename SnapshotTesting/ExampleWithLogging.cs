@@ -1,7 +1,5 @@
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
-using Serilog;
-using VerifyTests.Serilog;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace SnapshotTesting;
@@ -9,8 +7,6 @@ namespace SnapshotTesting;
 [UsesVerify]
 public class ExampleWithLogging
 {
-    private readonly Calculator _calculator;
-
     [ModuleInitializer]
     public static void Initialize()
     {
@@ -23,25 +19,17 @@ public class ExampleWithLogging
                     methodName: method.Name);
             });
         
-        VerifySerilog.Initialize();
-    }
-
-    public ExampleWithLogging()
-    {
-        var loggerFactory = new LoggerFactory()
-            .AddSerilog(Log.Logger);
-
-        _calculator = new Calculator(loggerFactory.CreateLogger("Logger"));
+        VerifyMicrosoftLogging.Initialize();
     }
 
     [Fact]
     public Task SnapshotTestingAndLogging()
     {
         // Arrange
-        RecordingLogger.Start();
-
+        var calculator = new Calculator(LoggerRecording.Start());
+        
         // Act
-        var actual = _calculator.Multiply(6, 7);
+        var actual = calculator.Multiply(6, 7);
 
         // Assert
         return Verify(actual);
