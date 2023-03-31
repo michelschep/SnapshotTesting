@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 using VerifyTests.EntityFramework;
 
 namespace SnapshotTesting;
@@ -6,6 +7,16 @@ namespace SnapshotTesting;
 [UsesVerify]
 public class ExampleWithEntityFramework
 {
+    [ModuleInitializer]
+    public static void Initialize()
+    {
+        DerivePathInfo(
+            (sourceFile, projectDirectory, type, method) => new(
+                directory: Path.Combine(projectDirectory, "VerifiedSnapshots"),
+                typeName: type.Name,
+                methodName: method.Name));
+    }
+    
     [Fact]
     public async Task SnapshotExampleWithEntityFramework()
     {

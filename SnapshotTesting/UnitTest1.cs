@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using FluentAssertions;
 using SnapshotTesting.Refactoring.FirstExampleTests;
@@ -7,19 +8,29 @@ namespace SnapshotTesting;
 [UsesVerify]
 public class UnitTest1
 {
+    [ModuleInitializer]
+    public static void Initialize()
+    {
+        DerivePathInfo(
+            (sourceFile, projectDirectory, type, method) => new(
+                directory: Path.Combine(projectDirectory, "VerifiedSnapshots"),
+                typeName: type.Name,
+                methodName: method.Name));
+    }
+    
     [Fact]
     public void Multiply_MultipleNumbers_ReturnsMultiplication()
     {
         // Arrange
         var calculator = new Calculator();
-        
+
         // Act
         var actual = calculator.Multiply(6, 7);
 
         // Assert
         actual.Should().Be(42);
     }
-    
+
     [Fact]
     public Task CreateReport_ShouldBeAsExpected()
     {
@@ -35,11 +46,11 @@ public class UnitTest1
         var invoice = new Invoice("BigCo", performances);
         var plays = new Dictionary<string, Play>
         {
-            {"hamlet", new Play("Hamlet", "tragedy")},
-            {"as-like", new Play("As You Like It", "comedy")},
-            {"othello", new Play("Othello", "tragedy")}
+            { "hamlet", new Play("Hamlet", "tragedy") },
+            { "as-like", new Play("As You Like It", "comedy") },
+            { "othello", new Play("Othello", "tragedy") }
         };
-        
+
         // Act
         var statement = theater.Statement(invoice, plays);
 
@@ -53,7 +64,7 @@ public class UnitTest1
             var r = regex.Replace(s, "DATETIME");
             return r;
         });
-        
+
         return Verify(statement, settings);
     }
 
