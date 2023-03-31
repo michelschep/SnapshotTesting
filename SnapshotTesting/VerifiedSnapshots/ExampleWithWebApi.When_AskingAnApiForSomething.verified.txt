@@ -1,0 +1,42 @@
+﻿{
+  Version: 1.1,
+  Status: 200 OK,
+  Content: {
+    Headers: {
+      Content-Type: application/json; charset=utf-8
+    },
+    Value: [
+      {
+        date: DateTimeOffset_1,
+        temperatureC: -5,
+        temperatureF: 24,
+        summary: Cool
+      },
+      {
+        date: DateTimeOffset_2,
+        temperatureC: 33,
+        temperatureF: 91,
+        summary: Bracing
+      },
+      {
+        date: DateTimeOffset_3,
+        temperatureC: 45,
+        temperatureF: 112,
+        summary: Cool
+      },
+      {
+        date: DateTimeOffset_4,
+        temperatureC: 4,
+        temperatureF: 39,
+        summary: Cool
+      },
+      {
+        date: DateTimeOffset_5,
+        temperatureC: 33,
+        temperatureF: 91,
+        summary: Scorching
+      }
+    ]
+  },
+  Request: http://localhost/WeatherForecast
+}

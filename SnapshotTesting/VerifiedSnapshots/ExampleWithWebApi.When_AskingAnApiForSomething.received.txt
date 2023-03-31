@@ -1,0 +1,41 @@
+﻿{
+  Status: 200 OK,
+  Content: {
+    Headers: {
+      Content-Type: application/json; charset=utf-8
+    },
+    Value: [
+      {
+        date: DateTimeOffset_1,
+        temperatureC: -3,
+        temperatureF: 27,
+        summary: Sweltering
+      },
+      {
+        date: DateTimeOffset_2,
+        temperatureC: 25,
+        temperatureF: 76,
+        summary: Mild
+      },
+      {
+        date: DateTimeOffset_3,
+        temperatureC: 16,
+        temperatureF: 60,
+        summary: Warm
+      },
+      {
+        date: DateTimeOffset_4,
+        temperatureC: 5,
+        temperatureF: 40,
+        summary: Balmy
+      },
+      {
+        date: DateTimeOffset_5,
+        temperatureC: -8,
+        temperatureF: 18,
+        summary: Freezing
+      }
+    ]
+  },
+  Request: http://localhost/WeatherForecast
+}

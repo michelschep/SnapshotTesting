@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 namespace SnapshotTesting;
 
 [UsesVerify]
-public class ExampleWithComplexReturnType // Add how to use parameterised tests!
+public class ExampleWithParameterizedTest // Add how to use parameterised tests!
 {
     [ModuleInitializer]
     public static void Initialize()
