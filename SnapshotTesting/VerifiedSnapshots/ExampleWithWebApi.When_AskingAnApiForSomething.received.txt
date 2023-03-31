@@ -7,33 +7,33 @@
     Value: [
       {
         date: DateTimeOffset_1,
-        temperatureC: -3,
-        temperatureF: 27,
+        temperatureC: 29,
+        temperatureF: 84,
         summary: Sweltering
       },
       {
         date: DateTimeOffset_2,
-        temperatureC: 25,
-        temperatureF: 76,
-        summary: Mild
+        temperatureC: 30,
+        temperatureF: 85,
+        summary: Freezing
       },
       {
         date: DateTimeOffset_3,
-        temperatureC: 16,
-        temperatureF: 60,
+        temperatureC: 47,
+        temperatureF: 116,
         summary: Warm
       },
       {
         date: DateTimeOffset_4,
-        temperatureC: 5,
-        temperatureF: 40,
-        summary: Balmy
+        temperatureC: -13,
+        temperatureF: 9,
+        summary: Sweltering
       },
       {
         date: DateTimeOffset_5,
-        temperatureC: -8,
-        temperatureF: 18,
-        summary: Freezing
+        temperatureC: 15,
+        temperatureF: 58,
+        summary: Hot
       }
     ]
   },
