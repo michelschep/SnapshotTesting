@@ -7,16 +7,6 @@ namespace SnapshotTesting;
 [UsesVerify]
 public class ExampleWithEntityFramework
 {
-    [ModuleInitializer]
-    public static void Initialize()
-    {
-        DerivePathInfo(
-            (sourceFile, projectDirectory, type, method) => new(
-                directory: Path.Combine(projectDirectory, "VerifiedSnapshots"),
-                typeName: type.Name,
-                methodName: method.Name));
-    }
-    
     [Fact]
     public async Task SnapshotExampleWithEntityFramework()
     {
@@ -32,7 +22,11 @@ public class ExampleWithEntityFramework
         EfRecording.StartRecording();
 
         // Act
-        var result = data.Companies.Where(c => c.Content == "Hotel Plus").ToList();
+        data.Companies.Add(new Company { Name = "Hilton Hotel" });
+        //data.SaveChanges();
+        data.Companies.Add(new Company { Name = "Hotel Plus" });
+        //data.SaveChanges();
+        data.Companies.Where(c => c.Name == "Hotel Plus");//.ToList();
 
         // Assert
         var entries = EfRecording.FinishRecording();
@@ -43,7 +37,7 @@ public class ExampleWithEntityFramework
 public class Company
 {
     public int Id { get; set; }
-    public string Content { get; set; }
+    public string Name { get; set; }
 }
 
 public class SampleDbContext : DbContext

@@ -1,0 +1,10 @@
+﻿[
+  {
+    Type: ReaderExecuted,
+    HasTransaction: false,
+    Text:
+SELECT "c"."Id", "c"."Name"
+FROM "Companies" AS "c"
+WHERE "c"."Name" = 'Hotel Plus'
+  }
+]

@@ -1,10 +1,9 @@
 using System.Runtime.CompilerServices;
-using FluentAssertions;
 
 namespace SnapshotTesting;
 
 [UsesVerify]
-public class ExampleWithComplexObject
+public class ExampleWithComplexObjectAndScrubbers
 {
     [Fact]
     public Task ExampleWithComplexObjectType()
@@ -16,27 +15,20 @@ public class ExampleWithComplexObject
         var actual = RetrieveComplexObject();
 
         // Assert
-
-        // Init
-        //actual.Should().Be(new DevNetNoord()
-        //{
-        //});
-
-        // Demo
         return Verify(actual);
     }
 
     private DevNetNoord RetrieveComplexObject()
     {
         // Create some speakers
-        Speaker speaker1 = new Speaker { ID = 1, Name = "John Smith", Topic = "Introduction to C#", CompanyName = "Acme Inc." };
-        Speaker speaker2 = new Speaker { ID = 2, Name = "Jane Doe", Topic = "ASP.NET Core", CompanyName = "Globex Corporation" };
-        Speaker speaker3 = new Speaker { ID = 3, Name = "Bob Johnson", Topic = "Database Design", CompanyName = "Initech" };
+        Speaker speaker1 = new Speaker { ID = Guid.NewGuid(), Name = "John Smith", Topic = "Introduction to C#", CompanyName = "Acme Inc." };
+        Speaker speaker2 = new Speaker { ID = Guid.NewGuid(), Name = "Jane Doe", Topic = "ASP.NET Core", CompanyName = "Globex Corporation" };
+        Speaker speaker3 = new Speaker { ID = Guid.NewGuid(), Name = "Bob Johnson", Topic = "Database Design", CompanyName = "Initech" };
 
         // Create some attendees
-        Attendee attendee1 = new Attendee { ID = 1, Name = "Alice Brown", CompanyName = "Acme Inc." };
-        Attendee attendee2 = new Attendee { ID = 2, Name = "David Lee", CompanyName = "Globex Corporation" };
-        Attendee attendee3 = new Attendee { ID = 3, Name = "Emily Chen", CompanyName = "Initech" };
+        Attendee attendee1 = new Attendee { ID = Guid.NewGuid(), Name = "Alice Brown", CompanyName = "Acme Inc." };
+        Attendee attendee2 = new Attendee { ID = Guid.NewGuid(), Name = "David Lee", CompanyName = "Globex Corporation" };
+        Attendee attendee3 = new Attendee { ID = Guid.NewGuid(), Name = "Emily Chen", CompanyName = "Initech" };
 
         // Create some schedule items
         Schedule schedule1 = new Schedule { SpeakerName = "John Smith", Time = new DateTime(2023, 4, 15, 9, 0, 0), ConferenceRoom = "Room 1", Topic = "Introduction to C#" };
@@ -49,7 +41,7 @@ public class ExampleWithComplexObject
             Speakers = new List<Speaker> { speaker1, speaker2, speaker3 },
             Attendees = new List<Attendee> { attendee1, attendee2, attendee3 },
             Schedule = new List<Schedule> { schedule1, schedule2, schedule3 },
-            EventDateTime = new DateTime(2023, 4, 15, 9, 0, 0),
+            EventDateTime = DateTime.Now, 
             EventLocation = "Groningen"
         };
 
@@ -58,7 +50,7 @@ public class ExampleWithComplexObject
 
     class Speaker
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
         public string Name { get; set; }
         public string Topic { get; set; }
         public string CompanyName { get; set; }
@@ -66,7 +58,7 @@ public class ExampleWithComplexObject
 
     class Attendee
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
         public string Name { get; set; }
         public string CompanyName { get; set; }
     }
@@ -87,4 +79,12 @@ public class ExampleWithComplexObject
         public DateTime EventDateTime { get; set; }
         public string EventLocation { get; set; }
     }
+    
+    [ModuleInitializer]
+    public static void Initialize()
+    {
+        VerifierSettings.DontScrubGuids();
+        VerifierSettings.DontScrubDateTimes();
+    }
+    
 }

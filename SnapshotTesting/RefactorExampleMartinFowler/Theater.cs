@@ -51,7 +51,6 @@ public class Theater
         result += $"Amount owed is {format(totalAmount / 100)}\r\n";
         result += $"You earned {volumeCredits} credits";
 
-        result += $"\r\nReport generated at {DateTime.Now:yyy-mm-dd HH:mm:ss}";
         return result;
     }
 

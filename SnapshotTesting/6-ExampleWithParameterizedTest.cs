@@ -5,16 +5,6 @@ namespace SnapshotTesting;
 [UsesVerify]
 public class ExampleWithParameterizedTest // Add how to use parameterised tests!
 {
-    [ModuleInitializer]
-    public static void Initialize()
-    {
-        DerivePathInfo(
-            (sourceFile, projectDirectory, type, method) => new(
-                directory: Path.Combine(projectDirectory, "VerifiedSnapshots"),
-                typeName: type.Name,
-                methodName: method.Name));
-    }
-
     [Theory]
     [InlineData(6, 7)]
     [InlineData(9, 7)]

@@ -1,0 +1,11 @@
+﻿{
+  target: 42,
+  logs: [
+    {
+      Information: Multiply 6 and 7
+    },
+    {
+      Information: Multiplication of 6 and 7 is 42
+    }
+  ]
+}

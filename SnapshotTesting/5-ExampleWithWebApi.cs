@@ -1,7 +1,6 @@
 using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-
 namespace SnapshotTesting;
 
 [UsesVerify]
@@ -10,16 +9,7 @@ public class ExampleWithWebApi
     [ModuleInitializer]
     public static void Initialize()
     {
-        DerivePathInfo(
-            (sourceFile, projectDirectory, type, method) =>
-            {
-                return new(
-                    directory: Path.Combine(projectDirectory, "VerifiedSnapshots"),
-                    typeName: type.Name,
-                    methodName: method.Name);
-            });
-        
-        VerifyHttp.Enable();
+        //VerifyHttp.Enable();
     }
 
     [Fact]
@@ -33,7 +23,7 @@ public class ExampleWithWebApi
         var actual = await client.GetAsync("/WeatherForecast");
 
         // Assert
-        await Verify(actual)
-            .IgnoreMembers("Version");;
+        await Verify(actual);
+        //.IgnoreMembers("Version");;
     }
 }
