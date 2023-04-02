@@ -2,13 +2,11 @@
 
 namespace SnapshotTesting;
 
-public static class StaticSettingsUsage
+public static class GlobalSettingsVerify
 {
     [ModuleInitializer]
     public static void Initialize()
     {
-        VerifierSettings.IgnoreStackTrace();
-        
         DerivePathInfo(
             (sourceFile, projectDirectory, type, method) => new(
                 directory: Path.Combine(projectDirectory, "VerifiedSnapshots"),
