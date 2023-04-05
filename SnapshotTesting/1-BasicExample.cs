@@ -33,7 +33,5 @@ public class BasicExample
         var expected = @"???";
 
         actual.Should().Be(expected);
-        // Demo
-        // ....;
     }
 }
