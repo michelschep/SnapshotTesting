@@ -22,11 +22,12 @@ public class ExampleWithEntityFramework
         EfRecording.StartRecording();
 
         // Act
-        data.Companies.Add(new Company { Name = "Hilton Hotel" });
+        //data.Companies.Add(new Company { Name = "Hilton Hotel" });
         //data.SaveChanges();
-        data.Companies.Add(new Company { Name = "Hotel Plus" });
+        //data.Companies.Add(new Company { Name = "Hotel Plus" });
         //data.SaveChanges();
-        data.Companies.Where(c => c.Name == "Hotel Plus");//.ToList();
+        
+        data.Companies.Where(c => c.Name == "Hotel Plus");
 
         // Assert
         var entries = EfRecording.FinishRecording();

@@ -21,22 +21,22 @@ public class ExampleWithComplexObjectAndScrubbers
     private DevNetNoord RetrieveComplexObject()
     {
         // Create some speakers
-        Speaker speaker1 = new Speaker { ID = Guid.NewGuid(), Name = "John Smith", Topic = "Introduction to C#", CompanyName = "Acme Inc." };
-        Speaker speaker2 = new Speaker { ID = Guid.NewGuid(), Name = "Jane Doe", Topic = "ASP.NET Core", CompanyName = "Globex Corporation" };
-        Speaker speaker3 = new Speaker { ID = Guid.NewGuid(), Name = "Bob Johnson", Topic = "Database Design", CompanyName = "Initech" };
+        var speaker1 = new Speaker { ID = Guid.NewGuid(), Name = "John Smith", Topic = "Introduction to C#", CompanyName = "Acme Inc." };
+        var speaker2 = new Speaker { ID = Guid.NewGuid(), Name = "Jane Doe", Topic = "ASP.NET Core", CompanyName = "Globex Corporation" };
+        var speaker3 = new Speaker { ID = Guid.NewGuid(), Name = "Bob Johnson", Topic = "Database Design", CompanyName = "Initech" };
 
         // Create some attendees
-        Attendee attendee1 = new Attendee { ID = Guid.NewGuid(), Name = "Alice Brown", CompanyName = "Acme Inc." };
-        Attendee attendee2 = new Attendee { ID = Guid.NewGuid(), Name = "David Lee", CompanyName = "Globex Corporation" };
-        Attendee attendee3 = new Attendee { ID = Guid.NewGuid(), Name = "Emily Chen", CompanyName = "Initech" };
+        var attendee1 = new Attendee { ID = Guid.NewGuid(), Name = "Alice Brown", CompanyName = "Acme Inc." };
+        var attendee2 = new Attendee { ID = Guid.NewGuid(), Name = "David Lee", CompanyName = "Globex Corporation" };
+        var attendee3 = new Attendee { ID = Guid.NewGuid(), Name = "Emily Chen", CompanyName = "Initech" };
 
         // Create some schedule items
-        Schedule schedule1 = new Schedule { SpeakerName = "John Smith", Time = new DateTime(2023, 4, 15, 9, 0, 0), ConferenceRoom = "Room 1", Topic = "Introduction to C#" };
-        Schedule schedule2 = new Schedule { SpeakerName = "Jane Doe", Time = new DateTime(2023, 4, 15, 10, 0, 0), ConferenceRoom = "Room 2", Topic = "ASP.NET Core" };
-        Schedule schedule3 = new Schedule { SpeakerName = "Bob Johnson", Time = new DateTime(2023, 4, 15, 11, 0, 0), ConferenceRoom = "Room 3", Topic = "Database Design" };
+        var schedule1 = new Schedule { SpeakerName = "John Smith", Time = new DateTime(2023, 4, 15, 9, 0, 0), ConferenceRoom = "Room 1", Topic = "Introduction to C#" };
+        var schedule2 = new Schedule { SpeakerName = "Jane Doe", Time = new DateTime(2023, 4, 15, 10, 0, 0), ConferenceRoom = "Room 2", Topic = "ASP.NET Core" };
+        var schedule3 = new Schedule { SpeakerName = "Bob Johnson", Time = new DateTime(2023, 4, 15, 11, 0, 0), ConferenceRoom = "Room 3", Topic = "Database Design" };
 
         // Create a DevNetNoord instance
-        DevNetNoord devNetNoord = new DevNetNoord
+        var devNetNoord = new DevNetNoord
         {
             Speakers = new List<Speaker> { speaker1, speaker2, speaker3 },
             Attendees = new List<Attendee> { attendee1, attendee2, attendee3 },

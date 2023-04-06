@@ -1,6 +1,3 @@
-using System.Runtime.CompilerServices;
-using FluentAssertions;
-
 namespace SnapshotTesting;
 
 [UsesVerify]
@@ -16,13 +13,6 @@ public class ExampleWithComplexObject
         var actual = RetrieveComplexObject();
 
         // Assert
-
-        // Init
-        //actual.Should().Be(new DevNetNoord()
-        //{
-        //});
-
-        // Demo
         return Verify(actual);
     }
 
