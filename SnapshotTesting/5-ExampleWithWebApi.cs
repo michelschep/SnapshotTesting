@@ -9,7 +9,7 @@ public class ExampleWithWebApi
     [ModuleInitializer]
     public static void Initialize()
     {
-        //VerifyHttp.Enable();
+        VerifyHttp.Enable();
     }
 
     [Fact]
@@ -23,7 +23,7 @@ public class ExampleWithWebApi
         var actual = await client.GetAsync("/WeatherForecast");
 
         // Assert
-        await Verify(actual);
-        //.IgnoreMembers("Version");;
+        await Verify(actual)
+        .IgnoreMembers("Version");
     }
 }

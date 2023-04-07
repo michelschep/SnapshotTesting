@@ -1,12 +1,12 @@
-using FluentAssertions;
 using SnapshotTesting.Refactoring.FirstExampleTests;
 
 namespace SnapshotTesting;
 
+[UsesVerify]
 public class BasicExample
 {
     [Fact]
-    public void CreateReport_ShouldBeAsExpected()
+    public async Task CreateReport_ShouldBeAsExpected()
     {
         // Arrange
         var theater = new Theater();
@@ -29,9 +29,6 @@ public class BasicExample
         var actual = theater.Statement(invoice, plays);
 
         // Assert
-        // Init
-        var expected = @"???";
-
-        actual.Should().Be(expected);
+        await Verify(actual);
     }
 }

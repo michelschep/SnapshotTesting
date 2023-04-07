@@ -7,7 +7,6 @@ public class ExampleWithComplexObject
     public Task ExampleWithComplexObjectType()
     {
         // Arrange
-        var expected = true;
 
         // Act
         var actual = RetrieveComplexObject();

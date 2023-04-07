@@ -9,7 +9,6 @@ public class ExampleWithComplexObjectAndScrubbers
     public Task ExampleWithComplexObjectType()
     {
         // Arrange
-        var expected = true;
 
         // Act
         var actual = RetrieveComplexObject();
@@ -83,8 +82,8 @@ public class ExampleWithComplexObjectAndScrubbers
     [ModuleInitializer]
     public static void Initialize()
     {
-        VerifierSettings.DontScrubGuids();
-        VerifierSettings.DontScrubDateTimes();
+        //VerifierSettings.DontScrubGuids();
+        //VerifierSettings.DontScrubDateTimes();
     }
     
 }
